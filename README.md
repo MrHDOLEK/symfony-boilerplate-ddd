@@ -4,7 +4,6 @@
 ![Symfony](symfony.webp)
 
 [![CI](https://github.com/MrHDOLEK/symfony-boilerplate-ddd/actions/workflows/php.yml/badge.svg?branch=main)](https://github.com/MrHDOLEK/symfony-boilerplate-ddd/actions/workflows/php.yml)
-[![Codecov.io](https://codecov.io/gh/MrHDOLEK/symfony-boilerplate-ddd/graph/badge.svg?token=KKBMW5HJVM)](https://codecov.io/gh/MrHDOLEK/symfony-boilerplate-ddd)
 [![PHPStan Enabled](https://img.shields.io/badge/PHPStan-level%2010-succes.svg?logo=php&logoColor=white&color=31C652)](https://phpstan.org/)
 [![PHP](https://img.shields.io/packagist/php-v/mrhdolek/symfony-boilerplate-ddd/dev-main?color=%23777bb3&logo=php&logoColor=white)](https://php.net/)
 

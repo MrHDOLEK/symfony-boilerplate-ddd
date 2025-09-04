@@ -84,6 +84,7 @@
     "scripts": {
         "cs:fix": "./vendor/bin/php-cs-fixer fix --diff --config codestyle.php",
         "cs:check": "./vendor/bin/php-cs-fixer fix --dry-run --diff --config codestyle.php",
+        "migrate": "php bin/console doctrine:migrations:migrate -n",
         "phpstan": [
             "php -d memory_limit=600M vendor/bin/phpstan analyse -c phpstan.neon"
         ],

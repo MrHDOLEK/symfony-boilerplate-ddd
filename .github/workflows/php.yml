@@ -14,10 +14,10 @@ jobs:
       pgsql:
         image: postgres:16
         env:
-          POSTGRES_DB: slim
-          POSTGRES_USER: slim
-          POSTGRES_PASSWORD: password
-          PGPASSWORD: password
+          POSTGRES_DB: dbname
+          POSTGRES_USER: user
+          POSTGRES_PASSWORD: passwd
+          PGPASSWORD: passwd
         ports:
           - 5432:5432
     steps:
@@ -57,18 +57,8 @@ jobs:
         run: |
           cp .env.test .env
           composer migrate
-          vendor/bin/phpunit --testsuite unit --log-junit junit.xml --coverage-clover clover.xml
+          composer test
           
       - name: Execute tests
         run: |
          composer behat
-
-      - name: Send test coverage to codecov.io
-        uses: codecov/codecov-action@v3
-        continue-on-error: true
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-        with:
-          files: clover.xml
-          fail_ci_if_error: true
-          verbose: true
