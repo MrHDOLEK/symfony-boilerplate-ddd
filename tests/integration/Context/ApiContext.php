@@ -16,9 +16,8 @@ final class ApiContext implements Context
     private Response $response;
 
     public function __construct(
-        private readonly KernelInterface $kernel
-    ) {
-    }
+        private readonly KernelInterface $kernel,
+    ) {}
 
     public function getResponse(): Response
     {
@@ -60,10 +59,10 @@ final class ApiContext implements Context
     private function request(
         string $path,
         string $method,
-        ?string $body = null
+        ?string $body = null,
     ): Request {
         $headers = [
-            'CONTENT_TYPE' => 'application/json',
+            "CONTENT_TYPE" => "application/json",
         ];
 
         return Request::create(
@@ -73,7 +72,7 @@ final class ApiContext implements Context
             [],
             [],
             $headers,
-            $body
+            $body,
         );
     }
 
@@ -81,7 +80,7 @@ final class ApiContext implements Context
     {
         if ($this->getResponse()->getStatusCode() !== $code) {
             throw new RuntimeException(
-                sprintf('Response code is %d, %d expected', $this->response->getStatusCode(), $code)
+                sprintf("Response code is %d, %d expected", $this->response->getStatusCode(), $code),
             );
         }
     }
@@ -92,7 +91,7 @@ final class ApiContext implements Context
         $content = json_decode($this->getResponse()->getContent(), true);
 
         if ($content !== $expectedContent) {
-            throw new RuntimeException('Response content is not as expected.');
+            throw new RuntimeException("Response content is not as expected.");
         }
     }
 }
