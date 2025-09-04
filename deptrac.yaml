@@ -1,0 +1,27 @@
+parameters:
+  paths:
+    - ./src
+  layers:
+    - name: SharedDomain
+      collectors:
+        - type: classLike
+          value: App\\Shared\\Domain\\.*
+    - name: Vendor
+      collectors:
+        - type: bool
+          must_not:
+            - type: classLike
+              value: App\\.*
+            - type: classNameRegex
+              value: '#^DateTime|^LogicException$|^RuntimeException$#'
+  ruleset:
+    SharedDomain:
+      - SharedDomain
+    SharedApplication:
+      - SharedDomain
+      - SharedApplication
+    SharedInfrastructure:
+      - SharedDomain
+      - SharedApplication
+      - SharedInfrastructure
+      - Vendor

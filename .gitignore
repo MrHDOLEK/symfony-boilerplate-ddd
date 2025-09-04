@@ -1,0 +1,25 @@
+/.env.local
+/.env.local.php
+/.env.*.local
+
+/var/
+
+.idea
+.build
+.DS_Store
+.composer
+
+.env
+/vendor
+/var/*
+
+/docker/volumes/
+/public/bundles/
+
+.phpunit.result.cache
+.deptrac.cache
+
+###> friendsofphp/php-cs-fixer ###
+/.php-cs-fixer.php
+/.php-cs-fixer.cache
+###< friendsofphp/php-cs-fixer ###
