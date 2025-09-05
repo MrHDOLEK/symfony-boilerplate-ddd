@@ -36,9 +36,8 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.3
-          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, intl, sockets
-          coverage: xdebug
+          php-version: 8.4
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, intl, sockets, apcu
 
       - name: Install Composer dependencies
         run: composer install --prefer-dist --no-interaction --no-suggest

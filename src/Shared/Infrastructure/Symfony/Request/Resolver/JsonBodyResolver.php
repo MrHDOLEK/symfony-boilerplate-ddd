@@ -16,6 +16,8 @@ use Symfony\Component\Serializer\Exception\UnexpectedValueException;
 use Symfony\Component\Serializer\Normalizer\AbstractObjectNormalizer;
 use Symfony\Component\Serializer\SerializerInterface;
 
+use function in_array;
+
 final class JsonBodyResolver implements ValueResolverInterface
 {
     private const string FORMAT = "json";
@@ -59,6 +61,6 @@ final class JsonBodyResolver implements ValueResolverInterface
             return false;
         }
 
-        return \in_array(RequestInterface::class, class_implements($type), true);
+        return in_array(RequestInterface::class, class_implements($type), true);
     }
 }

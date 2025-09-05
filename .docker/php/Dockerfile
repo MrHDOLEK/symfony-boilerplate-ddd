@@ -1,4 +1,4 @@
-ARG PHP_VERSION=8.3
+ARG PHP_VERSION=8.4
 
 FROM php:${PHP_VERSION}-fpm-bullseye as base
 
@@ -12,7 +12,8 @@ RUN apt-get update && apt-get install -y nginx python3 supervisor \
      libpq-dev libxpm-dev libvpx-dev libbz2-dev zlib1g-dev libzip-dev gnumeric \
     && curl -sS https://getcomposer.org/installer | php -- --version="${COMPOSER_VERSION}" --install-dir=/usr/local/bin --filename=composer \
     && docker-php-ext-install intl bcmath mbstring bz2 gd zip pgsql pdo_pgsql opcache pcntl sockets \
-    && docker-php-ext-enable intl pcntl \
+    && pecl install apcu \
+    && docker-php-ext-enable intl pcntl apcu \
     && apt-get remove -y git \
     && apt-get autoremove -y \
     && apt-get clean \
