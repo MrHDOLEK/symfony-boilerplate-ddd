@@ -14,9 +14,7 @@ final class ValidationError extends RuntimeException
      * @param array<mixed> $errors
      */
     public function __construct(
-        /**
-         * @var array<mixed>
-         */
+        /** @var array<mixed> */
         private array $errors,
     ) {
         parent::__construct("Request is invalid.", 400);
