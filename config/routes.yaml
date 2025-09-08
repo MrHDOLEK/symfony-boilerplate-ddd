@@ -1,6 +1,0 @@
-shared:
-    resource:
-        path: ../src/Shared/Infrastructure/Symfony/Controller/
-        namespace: App\Shared\Infrastructure\Symfony\Controller
-    type: attribute
-    prefix: /api
