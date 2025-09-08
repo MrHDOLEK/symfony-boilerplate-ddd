@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1498278e97b890cca8f356640a7110b0",
+    "content-hash": "41018f1d305d84ad765e656e0e6a93a0",
     "packages": [
         {
             "name": "brick/math",
@@ -9152,6 +9152,48 @@
             "time": "2025-08-19T13:44:55+00:00"
         },
         {
+            "name": "symplify/config-transformer",
+            "version": "12.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symplify/config-transformer.git",
+                "reference": "e984565722243ad6078aafe92f56c1770f96055b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symplify/config-transformer/zipball/e984565722243ad6078aafe92f56c1770f96055b",
+                "reference": "e984565722243ad6078aafe92f56c1770f96055b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "bin": [
+                "bin/config-transformer"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Prefixed version of Symfony YAML/XML to PHP/YAML config converter",
+            "support": {
+                "issues": "https://github.com/symplify/config-transformer/issues",
+                "source": "https://github.com/symplify/config-transformer/tree/12.4.3"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/rectorphp",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/tomasvotruba",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-07-16T09:19:44+00:00"
+        },
+        {
             "name": "symplify/easy-coding-standard",
             "version": "12.3.6",
             "source": {
@@ -9261,6 +9303,67 @@
                 }
             ],
             "time": "2024-03-03T12:36:25+00:00"
+        },
+        {
+            "name": "tomasvotruba/symfony-config-generator",
+            "version": "0.1.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TomasVotruba/symfony-config-generator.git",
+                "reference": "2230f0a4838afc49ef50f0b12d02b3027d0c5332"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TomasVotruba/symfony-config-generator/zipball/2230f0a4838afc49ef50f0b12d02b3027d0c5332",
+                "reference": "2230f0a4838afc49ef50f0b12d02b3027d0c5332",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.0",
+                "symfony/config": "^5.4|^6.4|^7.0",
+                "symfony/console": "^5.4|^6.4|^7.0",
+                "symfony/dependency-injection": "^5.4|^6.4|^7.0",
+                "webmozart/assert": "^1.11"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.10.56",
+                "rector/rector": "^1.0",
+                "symplify/easy-coding-standard": "^12.1",
+                "symplify/phpstan-rules": "^12.4",
+                "tomasvotruba/class-leak": "^0.2",
+                "tracy/tracy": "^2.10"
+            },
+            "bin": [
+                "bin/symfony-config-generator",
+                "bin/symfony-config-generator.php"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "TomasVotruba\\SymfonyConfigGenerator\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Generate Symfony 5.3+ config builder classes using CLI to improve static analysis and IDE support",
+            "support": {
+                "issues": "https://github.com/TomasVotruba/symfony-config-generator/issues",
+                "source": "https://github.com/TomasVotruba/symfony-config-generator/tree/0.1.10"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/rectorphp",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/tomasvotruba",
+                    "type": "github"
+                }
+            ],
+            "abandoned": "rector/swiss-knife",
+            "time": "2024-04-10T10:52:45+00:00"
         }
     ],
     "aliases": [],
