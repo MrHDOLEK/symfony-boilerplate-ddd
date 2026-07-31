@@ -1,0 +1,11 @@
+{
+    "name": "symfony-boilerplate/tools-deptrac",
+    "description": "Symfony boilerplate dev tooling (isolated) — deptrac",
+    "require-dev": {
+        "php": "8.5.*",
+        "deptrac/deptrac": "^4.7"
+    },
+    "config": {
+        "allow-plugins": false
+    }
+}

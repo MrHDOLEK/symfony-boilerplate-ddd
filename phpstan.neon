@@ -1,5 +1,49 @@
+includes:
+    - tools/phpstan/vendor/phpstan/phpstan-doctrine/extension.neon
+    - tools/phpstan/vendor/phpstan/phpstan-doctrine/rules.neon
+    - tools/phpstan/vendor/phpstan/phpstan-phpunit/extension.neon
+    - tools/phpstan/vendor/phpstan/phpstan-phpunit/rules.neon
+    - tools/phpstan/vendor/phpstan/phpstan-symfony/extension.neon
+    - tools/phpstan/vendor/phpstan/phpstan-symfony/rules.neon
+
 parameters:
     level: max
     paths:
         - src
         - config
+        - tests
+    bootstrapFiles:
+        - vendor/autoload.php
+    ignoreErrors:
+        -
+            identifier: symfonyBoilerplate.noTraitUse
+            path: tests/*
+            reportUnmatched: false
+        -
+            identifier: symfonyBoilerplate.rawSql
+            path: tests/*
+            reportUnmatched: false
+        -
+            identifier: symfonyBoilerplate.noMutableDateTime
+            path: tests/*
+            reportUnmatched: false
+        -
+            identifier: symfonyBoilerplate.noAmbientClock
+            path: tests/*
+            reportUnmatched: false
+
+rules:
+    - SymfonyBoilerplate\PhpStan\NoMutableDateTimeRule
+    - SymfonyBoilerplate\PhpStan\NoAmbientClockRule
+    - SymfonyBoilerplate\PhpStan\NoDoctrineAttributeInDomainRule
+    - SymfonyBoilerplate\PhpStan\NoFrameworkTypeInDomainRule
+    - SymfonyBoilerplate\PhpStan\NoTraitUseRule
+    - SymfonyBoilerplate\PhpStan\NoRawSqlStringRule
+    - SymfonyBoilerplate\PhpStan\NoRawRequestAccessInControllerRule
+    - SymfonyBoilerplate\PhpStan\ApiEndpointDocumentedRule
+    - SymfonyBoilerplate\PhpStan\RequestDtoContractRule
+    - SymfonyBoilerplate\PhpStan\DomainExceptionContractRule
+    - SymfonyBoilerplate\PhpStan\NoDebugFunctionRule
+    - SymfonyBoilerplate\PhpStan\NoEnvSuperglobalRule
+    - SymfonyBoilerplate\PhpStan\NoPublicSetterInDomainRule
+    - SymfonyBoilerplate\PhpStan\DoctrineTypeRegisteredRule

@@ -10,3 +10,43 @@ updates:
       prefix: "#3 - (php) "
     target-branch: main
     open-pull-requests-limit: 1
+
+  - package-ecosystem: composer
+    directory: "/tools/phpstan"
+    schedule:
+      interval: monthly
+      time: "07:30"
+    commit-message:
+      prefix: "#3 - (phpstan) "
+    target-branch: main
+    open-pull-requests-limit: 1
+
+  - package-ecosystem: composer
+    directory: "/tools/cs-fixer"
+    schedule:
+      interval: monthly
+      time: "07:30"
+    commit-message:
+      prefix: "#3 - (cs-fixer) "
+    target-branch: main
+    open-pull-requests-limit: 1
+
+  - package-ecosystem: composer
+    directory: "/tools/deptrac"
+    schedule:
+      interval: monthly
+      time: "07:30"
+    commit-message:
+      prefix: "#3 - (deptrac) "
+    target-branch: main
+    open-pull-requests-limit: 1
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: monthly
+      time: "07:30"
+    commit-message:
+      prefix: "#3 - (github-actions) "
+    target-branch: main
+    open-pull-requests-limit: 1

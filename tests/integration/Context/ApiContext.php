@@ -6,6 +6,8 @@ namespace App\Tests\Integration\Context;
 
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\PyStringNode;
+use Behat\Step\Then;
+use Behat\Step\When;
 use RuntimeException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,33 +26,25 @@ final class ApiContext implements Context
         return $this->response;
     }
 
-    /**
-     * @When I send a :method request to :path
-     */
+    #[When("I send a :method request to :path")]
     public function iSendMethodRequest(string $method, string $path): Response
     {
         return $this->response = $this->kernel->handle($this->request($path, $method));
     }
 
-    /**
-     * @When I send a :method request to :path with body:
-     */
+    #[When("I send a :method request to :path with body:")]
     public function iSendMethodRequestWithBody(string $method, string $path, PyStringNode $content): Response
     {
         return $this->response = $this->kernel->handle($this->request($path, $method, $content->getRaw()));
     }
 
-    /**
-     * @Then the response code is :code
-     */
+    #[Then("the response code is :code")]
     public function theResponseCodeIs(int $code): void
     {
         $this->assertResponseCode($code);
     }
 
-    /**
-     * @Then the response content is:
-     */
+    #[Then("the response content is:")]
     public function theResponseContentIs(PyStringNode $content): void
     {
         $this->assertResponseContent($content->getRaw());
@@ -87,10 +81,10 @@ final class ApiContext implements Context
 
     private function assertResponseContent(string $expectedContent): void
     {
-        $expectedContent = json_decode($expectedContent, true);
-        $content = json_decode($this->getResponse()->getContent(), true);
+        $expected = json_decode($expectedContent, true);
+        $content = json_decode((string)$this->getResponse()->getContent(), true);
 
-        if ($content !== $expectedContent) {
+        if ($content !== $expected) {
             throw new RuntimeException("Response content is not as expected.");
         }
     }

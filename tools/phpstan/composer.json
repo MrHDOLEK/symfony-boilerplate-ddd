@@ -1,0 +1,19 @@
+{
+    "name": "symfony-boilerplate/tools-phpstan",
+    "description": "Symfony boilerplate dev tooling (isolated) — PHPStan + custom rules",
+    "require-dev": {
+        "php": "8.5.*",
+        "phpstan/phpstan": "^2.2",
+        "phpstan/phpstan-doctrine": "^2.0",
+        "phpstan/phpstan-phpunit": "^2.0",
+        "phpstan/phpstan-symfony": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SymfonyBoilerplate\\PhpStan\\": "src/"
+        }
+    },
+    "config": {
+        "allow-plugins": false
+    }
+}

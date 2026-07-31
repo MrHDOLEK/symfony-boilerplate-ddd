@@ -13,11 +13,19 @@
 /vendor
 /var/*
 
+/tools/*/vendor
+
 /docker/volumes/
 /public/bundles/
 
+/config/reference.php
+
 .phpunit.result.cache
+.phpunit.cache
 .deptrac.cache
+
+/clover.xml
+/junit.xml
 
 ###> friendsofphp/php-cs-fixer ###
 /.php-cs-fixer.php

@@ -1,27 +1,50 @@
-parameters:
+deptrac:
   paths:
     - ./src
+
+  exclude_files:
+    - '#.*[Tt]est.*#'
+
   layers:
-    - name: SharedDomain
+    - name: Domain
       collectors:
         - type: classLike
-          value: App\\Shared\\Domain\\.*
+          value: '^App\\[A-Za-z0-9]+\\Domain\\'
+
+    - name: Application
+      collectors:
+        - type: classLike
+          value: '^App\\[A-Za-z0-9]+\\Application\\'
+
+    - name: Infrastructure
+      collectors:
+        - type: classLike
+          value: '^App\\[A-Za-z0-9]+\\Infrastructure\\'
+
+    - name: Kernel
+      collectors:
+        - type: classLike
+          value: '^App\\Kernel$'
+
     - name: Vendor
       collectors:
         - type: bool
           must_not:
             - type: classLike
-              value: App\\.*
+              value: '^App\\'
             - type: classNameRegex
-              value: '#^DateTime|^LogicException$|^RuntimeException$#'
+              value: '#^(?:Stringable|Countable|IteratorAggregate|Traversable|ArrayAccess|JsonSerializable|Throwable|Generator|Closure|Attribute|DateTime|DateTimeImmutable|DateTimeInterface|DateInterval|DateTimeZone|Exception|Error|TypeError|ValueError|LogicException|RuntimeException|InvalidArgumentException|DomainException|OutOfBoundsException|OutOfRangeException|LengthException|UnexpectedValueException|JsonException|Reflection[A-Za-z]*)$#'
+
   ruleset:
-    SharedDomain:
-      - SharedDomain
-    SharedApplication:
-      - SharedDomain
-      - SharedApplication
-    SharedInfrastructure:
-      - SharedDomain
-      - SharedApplication
-      - SharedInfrastructure
+    Domain: ~
+
+    Application:
+      - Domain
+
+    Infrastructure:
+      - Domain
+      - Application
+      - Vendor
+
+    Kernel:
       - Vendor

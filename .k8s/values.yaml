@@ -1,0 +1,128 @@
+nameOverride: symfony-app
+fullnameOverride: ""
+
+image:
+  repository: placeholder
+  tag: "placeholder"
+  pullPolicy: IfNotPresent
+imagePullSecrets: []
+
+env:
+  existingSecret: ""
+  secret: {}
+
+app:
+  replicaCount: 2
+  service:
+    port: 80
+  probes:
+    readinessPath: /readyz
+    livenessPath: /healthz
+    startup:
+      failureThreshold: 30
+      periodSeconds: 2
+      timeoutSeconds: 2
+    readiness:
+      periodSeconds: 10
+      timeoutSeconds: 3
+    liveness:
+      periodSeconds: 20
+      timeoutSeconds: 3
+      failureThreshold: 3
+  resources:
+    requests:
+      cpu: 250m
+      memory: 256Mi
+    limits:
+      memory: 512Mi
+      cpu: "1"
+
+worker:
+  enabled: false
+  replicaCount: 1
+  transport: async
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      memory: 256Mi
+      cpu: 256m
+
+scheduler:
+  enabled: false
+  schedule: "* * * * *"
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: 60
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  resources:
+    requests:
+      cpu: 25m
+      memory: 96Mi
+    limits:
+      memory: 256Mi
+      cpu: 500m
+
+persistence:
+  enabled: false
+  storageClass: ""
+  accessMode: ReadWriteMany
+  size: 5Gi
+  mountPath: /var/www/var/storage
+
+autoscaling:
+  app:
+    enabled: false
+    minReplicas: 2
+    maxReplicas: 6
+    targetCPUUtilizationPercentage: 75
+  worker:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 4
+    targetCPUUtilizationPercentage: 75
+
+jobs:
+  migrate:
+    enabled: true
+    ttlSecondsAfterFinished: 3600
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        memory: 512Mi
+        cpu: "1"
+  seed:
+    enabled: false
+    command: ["php", "bin/console", "doctrine:fixtures:load", "--no-interaction"]
+    ttlSecondsAfterFinished: 3600
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        memory: 512Mi
+        cpu: "1"
+
+ingress:
+  enabled: true
+  className: traefik
+  annotations: {}
+  hosts:
+    - host: placeholder.pl
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+
+serviceAccount:
+  create: true
+  name: ""
+
+podSecurityContext: {}
+securityContext: {}
+nodeSelector: {}
+tolerations: []
+affinity: {}
