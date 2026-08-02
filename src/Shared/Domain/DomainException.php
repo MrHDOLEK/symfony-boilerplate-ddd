@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Shared\Domain;
 
-use LogicException;
+use RuntimeException;
 
-abstract class DomainException extends LogicException
+abstract class DomainException extends RuntimeException
 {
 }

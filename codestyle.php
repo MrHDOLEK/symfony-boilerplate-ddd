@@ -9,9 +9,16 @@ $config = new Config(
     paths: new Paths(
         "src",
         "tests",
-        "codestyle.php",
         "public",
         "migrations",
+        "config/packages",
+        "config/routes",
+        "config/bundles.php",
+        "config/preload.php",
+        "config/routes.php",
+        "config/services.php",
+        "config/services_test.php",
+        "codestyle.php",
     ),
 );
 

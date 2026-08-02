@@ -2,15 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\Infrastructure\Symfony\Controller;
+namespace App\Shared\Infrastructure\Symfony\Controller\Api;
 
 use OpenApi\Attributes as OA;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
-final class IndexController extends AbstractController
+final class IndexController
 {
     #[Route("/v1", name: "status.get", methods: ["GET"])]
     #[OA\Get(

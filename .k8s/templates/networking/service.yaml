@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "symfony-app.fullname" . }}
+  labels:
+    {{- include "symfony-app.labels" . | nindent 4 }}
+    app.kubernetes.io/component: app
+spec:
+  type: ClusterIP
+  selector:
+    {{- include "symfony-app.selectorLabels" . | nindent 4 }}
+    app.kubernetes.io/component: app
+  ports:
+    - name: http
+      port: {{ .Values.app.service.port }}
+      targetPort: http

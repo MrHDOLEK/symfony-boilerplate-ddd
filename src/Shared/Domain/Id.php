@@ -4,14 +4,26 @@ declare(strict_types=1);
 
 namespace App\Shared\Domain;
 
-readonly class Id
+use Stringable;
+
+readonly class Id implements Stringable
 {
     private const string ID_FORMAT = "/^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$/i";
 
-    public function __construct(
+    final public function __construct(
         private string $id,
     ) {
         $this->guard();
+    }
+
+    public function __toString(): string
+    {
+        return $this->id;
+    }
+
+    public static function fromString(string $id): static
+    {
+        return new static($id);
     }
 
     public function toString(): string
