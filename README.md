@@ -13,21 +13,22 @@
 
 ## Project setup
 
+The task runner is [`just`](https://github.com/casey/just). Install it first:
+
+- macOS: `brew install just`
+- Linux: `sudo snap install --edge --classic just` or `cargo install just`
+- Windows: `winget install --id Casey.Just --exact` or `scoop install just`
+
 ### Development
-If you have problems with permissions please add sudo before make example:
-- `sudo make install`
-- `sudo make start`
-### Run env for Mac/Linux
+If you have problems with permissions please add sudo before just example:
+- `sudo just install`
+- `sudo just start`
 
-- `make install`
-- `make start`
-- `make db-create`
+### Run env for Mac/Linux/Windows
 
-### Run env for Windows
-Please install packages makefile for [Windows](http://gnuwin32.sourceforge.net/packages/make.htm)
-- `make install`
-- `make start`
-- `make db-create`
+- `just install`
+- `just start`
+- `just migrate`
 
 ### Address where the environment is available
 - `http://localhost`
@@ -36,7 +37,7 @@ Please install packages makefile for [Windows](http://gnuwin32.sourceforge.net/p
 
 ## All commands
 
--  `make help`
+-  `just`
 
 ## Documentations
 
