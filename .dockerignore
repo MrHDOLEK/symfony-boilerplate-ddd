@@ -22,7 +22,7 @@ phpunit.xml
 phpstan.neon
 deptrac.yaml
 codestyle.php
-Makefile
+justfile
 docker-compose.yml
 .k8s
 
